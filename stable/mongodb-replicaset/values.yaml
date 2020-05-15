@@ -76,6 +76,7 @@ metrics:
   securityContext:
     enabled: true
     runAsUser: 1001
+  lifecycle: {}
 
 # Annotations to be added to MongoDB pods
 podAnnotations: {}
@@ -97,6 +98,10 @@ resources: {}
 # requests:
 #   cpu: 100m
 #   memory: 256Mi
+
+## Lifecycle Hook
+## ref: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/
+lifecycle: {}
 
 ## Node selector
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector

@@ -202,6 +202,10 @@ spec:
             - --sslCAFile=/data/configdb/tls.crt
             - --sslPEMKeyFile=/work-dir/mongo.pem
           {{- end }}
+          {{- with .Values.metrics.lifecycle }}
+          lifecycle:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           livenessProbe:
             exec:
               command:
@@ -246,7 +250,7 @@ spec:
           image: "{{ .Values.metrics.image.repository }}:{{ .Values.metrics.image.tag }}"
           imagePullPolicy: {{ .Values.metrics.image.pullPolicy | quote }}
           command:
-            - sh
+            - bash
             - -c
             - >-
               /bin/mongodb_exporter
@@ -283,6 +287,10 @@ spec:
           {{- if .Values.metrics.securityContext.enabled }}
           securityContext:
             runAsUser: {{ .Values.metrics.securityContext.runAsUser }}
+          {{- end }}
+          {{- with .Values.metrics.lifecycle }}
+          lifecycle:
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           livenessProbe:
             exec:

@@ -80,6 +80,7 @@ The following table lists the configurable parameters of the mongodb chart and t
 | `metrics.securityContext.fsGroup`   | Group ID for the metrics container                                        | `1001`                                              |
 | `metrics.securityContext.runAsUser` | User ID for the metrics container                                         | `1001`                                              |
 | `metrics.prometheusServiceDiscovery`| Adds annotations for Prometheus ServiceDiscovery                          | `true`                                              |
+| `metrics.lifecycle`                 | Lifecycle hooks for the MongoDB metrics container                         | `{}`                                                |
 | `auth.enabled`                      | If `true`, keyfile access control is enabled                              | `false`                                             |
 | `auth.key`                          | Key for internal authentication                                           | ``                                                  |
 | `auth.existingKeySecret`            | If set, an existing secret with this name for the key is used             | ``                                                  |
@@ -93,6 +94,7 @@ The following table lists the configurable parameters of the mongodb chart and t
 | `serviceAnnotations`                | Annotations to be added to the service                                    | `{}`                                                |
 | `configmap`                         | Content of the MongoDB config file                                        | ``                                                  |
 | `initMongodStandalone`              | If set, initContainer executes script in standalone mode                  | ``                                                  |
+| `lifecycle`                         | Lifecycle hooks for the MongoDB container                                 | `{}`                                                |
 | `nodeSelector`                      | Node labels for pod assignment                                            | `{}`                                                |
 | `affinity`                          | Node/pod affinities                                                       | `{}`                                                |
 | `tolerations`                       | List of node taints to tolerate                                           | `[]`                                                |
